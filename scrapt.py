@@ -12,7 +12,7 @@ import pandas as pd
 这里我们可以使用requests库中的get()函数向网站发送一个GET请求
 然后使用.text属性获取请求返回的HTML源代码。
 """
-url = 'https://www.example.org/'
+url = 'https://www.example.com/'
 response = requests.get(url)
 html = response.text
 
