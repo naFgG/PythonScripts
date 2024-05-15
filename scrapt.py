@@ -1,6 +1,6 @@
 """
 在Python中，我们可以使用第三方库来实现爬虫。
-比如requests库用于发送HTTP请求
+比如requests库用于发送HTTP请求，只能爬静态网页。有javascript的网页需要其他库
 beautifulsoup4库用于解析HTML代码
 """
 import requests
@@ -13,14 +13,16 @@ import pandas as pd
 然后使用.text属性获取请求返回的HTML源代码。
 """
 url = 'https://www.example.com/'
-response = requests.get(url)
+header = {'User-Agent': 'xxxxxx'}
+response = requests.get(url, header)
+response.encoding = response.apparent_encoding
 html = response.text
 
 """
 得到网页源代码后，我们需要从中提取出我们需要的信息。
 通常情况下，我们需要使用beautifulsoup4库中的BeautifulSoup类来解析HTML代码。
 """
-soup = BeautifulSoup(html, 'html.parser')
+soup = BeautifulSoup(html, 'lxml')
 
 """
 接下来，我们需要找到包含所需信息的HTML标签，并将其提取出来。
